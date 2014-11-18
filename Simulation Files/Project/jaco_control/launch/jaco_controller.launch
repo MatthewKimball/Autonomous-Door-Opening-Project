@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+<rosparam file="$(find jaco_control)/config/jaco_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+ <node name="arm_controller_spawner" pkg="pr2_controller_manager" type="spawner" args="jaco_arm_controller" />
+
+
+
+
+</launch>

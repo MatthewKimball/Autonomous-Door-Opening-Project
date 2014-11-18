@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<robot name="jaco" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- transmissions are required by the controller manager (here: for simulation in gazebo) -->
+
+	
+
+  <transmission name="jaco_1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="jaco_joint_1"/>
+    <actuator name="jaco_1_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="jaco_2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="jaco_joint_2"/>
+    <actuator name="jaco_2_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+		
+  <transmission name="jaco_3_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="jaco_joint_3"/>
+    <actuator name="jaco_3_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+		  <transmission name="jaco_4_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="jaco_joint_4"/>
+    <actuator name="jaco_4_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+		  <transmission name="jaco_5_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="jaco_joint_5"/>
+    <actuator name="jaco_5_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+		  <transmission name="jaco_6_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="jaco_joint_6"/>
+    <actuator name="jaco_6_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+		
+
+
+
+		
+
+
+</robot>

@@ -1,0 +1,23 @@
+<launch>
+
+ <!--rosparam command="load" file="$(find [robot_moveit_config])/config/joint_names.yaml"/-->
+<include file="$(find industrial_robot_simulator)/launch/robot_interface_simulator.launch"/>
+
+  <!-- load the robot_description parameter before launching ROS-I nodes -->
+  <include file="$(find jaco_moveit_config)/launch/planning_context.launch" >
+    <arg name="load_robot_description" value="true" />
+  </include>
+
+  <!-- If needed, broadcast static tf for robot root -->
+    <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster_0" args="0 0 0 0 0 0 world base_link 100" />
+
+  <include file="$(find jaco_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+
+  <include file="$(find jaco_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+  </include>
+  
+
+</launch>

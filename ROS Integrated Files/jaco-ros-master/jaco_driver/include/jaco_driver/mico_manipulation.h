@@ -1,0 +1,83 @@
+//============================================================================
+// Name        : mico_manipulation.h
+// Author      : Matthew Kimball, Tai Trinh
+// Version     : 1.0.0
+// Copyright   : Your copyright notice
+// Description : Header Room Access Manipulation 
+//============================================================================
+
+#ifndef JACO_DRIVER_MICO_MANIP_H
+#define JACO_DRIVER_MICO_MANIP_H
+
+#include <ros/ros.h>
+
+
+#include <time.h>
+#include <math.h>
+#include <iostream>
+#include <dlfcn.h>
+#include <unistd.h>
+#include <cstdio>
+
+#include "kinova/KinovaTypes.h"
+#include "jaco_driver/jaco_comm.h"
+#include "jaco_driver/jaco_api.h"
+
+
+namespace jaco
+{
+    //Door Handle Characteristic 
+    struct DoorInfo{
+    CartesianInfo cartesian_handle_position_;
+    CartesianInfo cartesian_hinge_position_;
+    int handle_length_;
+    bool handle_type_;
+    bool opening_direction_;
+    };
+
+class MicoManip
+{
+ public:
+    //void MicoManip(void);
+    void elevatorButton(const CartesianInfo &position);
+    void Coordinate_Calibration(const CartesianInfo &kinect_position_);
+    void DoorOpen(const DoorInfo &door);
+    void turning_coordinates_generation(const DoorInfo &door);
+    void opening_coordinates_generation(bool opening_direction);
+
+    //------------Camera Detected Variables--------------//
+          //Handle Axis of Rotation Co-ordinates
+          float handle_Raxis_Coordinate_x;
+          float handle_Raxis_Coordinate_y;
+          float handle_Raxis_Coordinate_z;
+
+          //Door Hinge Co-ordinates
+          float door_Raxis_Coordinate_x;
+          float door_Raxis_Coordinate_y;
+          float door_Raxis_Coordinate_z;
+
+          //Door Handle Properties
+          bool handle_type; //True for handle, False for knob
+          float handle_length;
+          bool hinge_position; //True for left, False for right
+
+          //------------Door Parameter Calculations--------------//
+
+              float gripping_Coordinate_x;
+              float gripping_Coordinate_y;
+              float gripping_Coordinate_z;
+              float OFFSET_x;
+              float OFFSET_y;
+              float OFFSET_z;
+              float safe_gripper_distance;
+
+              float navigation_point[12][3];
+              float navigation_point_door[12][3];
+ private:
+ jaco::JacoAPI jaco_api_;
+ CartesianInfo kinect_position_;
+ CartesianInfo calibration_position_;
+};
+
+}  // namespace jaco
+#endif  // JACO_DRIVER_JACO_ARM_H

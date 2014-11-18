@@ -1,0 +1,5 @@
+geometry_msgs/Vector3 handle_axis_rotation
+geometry_msgs/Vector3 door_hinge
+int16 handle_length
+bool handle_type
+bool hinge_direction
